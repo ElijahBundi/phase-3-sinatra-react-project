@@ -9,9 +9,8 @@ class ApplicationController < Sinatra::Base
   get '/blogs' do
     blogs = Blog.all
     blogs.map do |blog|
-      blog.title
-    end
-    blogs.to_json
+      blog.title.to_json
+    end    
   end 
 
   post '/reviews' do
