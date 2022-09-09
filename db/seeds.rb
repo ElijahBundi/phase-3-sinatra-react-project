@@ -11,7 +11,7 @@ end
 35.times do
     author = Author.order('RANDOM()').first
     blog = Blog.create(
-        title: Faker::Quote.robin,
+        title: Faker::Book.title,
         content: Faker::Quote.matz,
         author_id: author.id
     )

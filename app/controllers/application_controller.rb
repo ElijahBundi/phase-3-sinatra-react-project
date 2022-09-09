@@ -7,9 +7,7 @@ class ApplicationController < Sinatra::Base
   end
   
   get '/blogs' do
-    blogs = Blog.all.map do |blog|
-      blog.title
-    end
+    blogs = Blog.all
     blogs.to_json 
   end 
 
