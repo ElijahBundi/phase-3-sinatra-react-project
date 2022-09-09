@@ -11,6 +11,13 @@ class ApplicationController < Sinatra::Base
     blogs.to_json 
   end 
 
+  get '/blogs/titles' do
+    blogs = Blog.all.map do |blog|
+      blog.title
+    end
+    blogs.to_json 
+  end 
+
   get '/authors' do
     authors = Author.all
     authors.to_json
@@ -41,7 +48,7 @@ class ApplicationController < Sinatra::Base
     author.to_json
   end
 
-  patch '/blog/:id' do
+  patch '/blogs/:id' do
     blog = Blog.find(params[:id])
     blog.update(
       title: params[:title]
@@ -49,13 +56,13 @@ class ApplicationController < Sinatra::Base
     blog.to_json
   end
 
-  delete '/blog/:id' do
+  delete '/blogs/:id' do
     blog = Blog.find(params[:id])
     blog.destroy
     blog.to_json
   end
 
-  delete '/author/:id' do
+  delete '/authors/:id' do
     author = Author.find(params[:id])
     author.destroy
     author.to_json
